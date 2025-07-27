@@ -1,0 +1,32 @@
+﻿version: '3.8'
+
+        services:
+        db:
+        image: postgres:15
+        container_name: escvoting-db
+        environment:
+        POSTGRES_DB: escvoting_prod
+        POSTGRES_USER: prod_user
+        POSTGRES_PASSWORD: prod_pass
+        volumes:
+        - postgres_data:/var/lib/postgresql/data
+        networks:
+        - escvoting
+
+        backend:
+        image: esc-voting-service
+        container_name: escvoting-api
+        depends_on:
+        - db
+        ports:
+        - "8080:8080"
+        environment:
+        SPRING_PROFILES_ACTIVE: prod
+        networks:
+        - escvoting
+
+        volumes:
+        postgres_data:
+
+        networks:
+        escvoting:
