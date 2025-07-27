@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy on Server
+    name: Deploy on Server Test
     runs-on: ubuntu-latest
 
     steps:
