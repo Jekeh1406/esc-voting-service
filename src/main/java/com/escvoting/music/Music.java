@@ -12,13 +12,13 @@ public class Music {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String artist;
-    private String musicName;
+    private String title;
     @ManyToOne
     private Country country;
 
     public Music(Country country, String musicName, String singer, Long id) {
         this.country = country;
-        this.musicName = musicName;
+        this.title = musicName;
         this.artist = singer;
         this.id = id;
     }
@@ -43,12 +43,12 @@ public class Music {
         this.artist = artist;
     }
 
-    public String getMusicName() {
-        return musicName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMusicName(String musicName) {
-        this.musicName = musicName;
+    public void  setTitle(String musicName) {
+        this.title = musicName;
     }
 
     public Country getCountry() {

@@ -59,7 +59,7 @@ public class User {
         this.username = username;
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public String getPassword() {
         return password;
     }

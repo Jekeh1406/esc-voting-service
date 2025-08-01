@@ -27,6 +27,11 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country getCountryByCode(String countryCode) {
-        return countryRepository.findByCountryCode(countryCode);
+        return countryRepository.findByCode(countryCode);
+    }
+
+    @Override
+    public void deleteCountry(String countryCode) {
+        countryRepository.deleteByCode(countryCode);
     }
 }

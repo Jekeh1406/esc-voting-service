@@ -1,13 +1,15 @@
 package com.escvoting.country;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/country")
+@RequestMapping("/country")
 public class CountryController {
 
     private final CountryService countryService;
+
 
     public CountryController(CountryService countryService) {
         this.countryService = countryService;
@@ -23,9 +25,16 @@ public class CountryController {
         return countryService.getAllCountries();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{countryCode}")
     public Country getCountryByCode(@PathVariable String countryCode) {
         return countryService.getCountryByCode(countryCode);
     }
+
+    @DeleteMapping("/{countryCode}")
+    public ResponseEntity<Void> deleteCountry(@PathVariable String countryCode) {
+        countryService.deleteCountry(countryCode);
+        return ResponseEntity.noContent().build();  // Renvoie un statut 204 (No Content) après suppression
+    }
+
 
 }
