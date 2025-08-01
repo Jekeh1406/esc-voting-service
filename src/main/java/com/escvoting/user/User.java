@@ -1,7 +1,12 @@
 package com.escvoting.user;
 
+import com.escvoting.vote.Vote;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 
 @Entity
@@ -11,11 +16,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
     private String username;
+    @Column(nullable = false, unique = true)
     private String password;
+    @Column(nullable = false, unique = true)
     private String email;
     private String firstName;
     private String lastName;
+/*
+    @ManyToMany(mappedBy = "members")
+    private Set<Group> groups = new HashSet<>();
+*/
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vote> votes = new ArrayList<>();
 
     public User() {
     }
@@ -45,7 +59,7 @@ public class User {
         this.username = username;
     }
 
-    @JsonIgnore
+    //@JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -76,5 +90,20 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+//    public Set<Group> getGroups() {
+//        return groups;
+//    }
+//
+//    public void setGroups(Set<Group> groups) {
+//        this.groups = groups;
+//    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 }
