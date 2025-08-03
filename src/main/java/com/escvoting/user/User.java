@@ -3,12 +3,13 @@ package com.escvoting.user;
 import com.escvoting.vote.Vote;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
+@Data
 @Entity
 @Table(name = "utilisateur")
 public class User {
@@ -16,20 +17,19 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String username;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
     private String firstName;
     private String lastName;
-/*
-    @ManyToMany(mappedBy = "members")
-    private Set<Group> groups = new HashSet<>();
-*/
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Vote> votes = new ArrayList<>();
+    private List<Vote> votes;
+
+
 
     public User() {
     }
@@ -43,62 +43,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    //@JsonIgnore
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-//    public Set<Group> getGroups() {
-//        return groups;
-//    }
-//
-//    public void setGroups(Set<Group> groups) {
-//        this.groups = groups;
-//    }
-
     public List<Vote> getVotes() {
         return votes;
     }
@@ -106,4 +50,6 @@ public class User {
     public void setVotes(List<Vote> votes) {
         this.votes = votes;
     }
+
+
 }

@@ -1,6 +1,8 @@
 package com.escvoting.country;
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "country")
 public class Country {
@@ -16,21 +18,5 @@ public class Country {
 
     public Country() {
 
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
