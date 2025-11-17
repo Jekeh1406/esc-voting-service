@@ -8,10 +8,12 @@ import lombok.Data;
 public class Country {
 
     @Id
+    int id;
     String code;
     String name;
 
-    public Country(String code, String name) {
+    public Country(int id, String code, String name) {
+        this.id = id;
         this.code = code;
         this.name = name;
     }

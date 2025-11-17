@@ -5,7 +5,7 @@ import java.util.List;
 public interface CountryService {
     Country saveCountry(Country country);
     List<Country> getAllCountries();
-    Country getCountryByCode(String countryCode);
+    Country getCountryById(int id);
 
     void deleteCountry(String countryCode);
 }

@@ -21,23 +21,17 @@ public class Music {
     private String title;
     @ManyToOne
     private Country country;
-
-    public List<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
-    }
+    private String imgUrl;
 
     @OneToMany(mappedBy = "music", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Vote> votes;
 
-    public Music(Country country, String musicName, String singer, Long id) {
+    public Music(Country country, String musicName, String singer, Long id, String imgUrl) {
         this.country = country;
         this.title = musicName;
         this.artist = singer;
         this.id = id;
+        this.imgUrl = imgUrl;
     }
 
     public Music() {

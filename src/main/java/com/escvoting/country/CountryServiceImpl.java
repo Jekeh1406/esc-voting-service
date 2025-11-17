@@ -1,7 +1,4 @@
 package com.escvoting.country;
-import com.escvoting.music.Music;
-import com.escvoting.music.MusicRepository;
-import com.escvoting.music.MusicService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +23,8 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Country getCountryByCode(String countryCode) {
-        return countryRepository.findByCode(countryCode);
+    public Country getCountryById(int id) {
+        return null;
     }
 
     @Override

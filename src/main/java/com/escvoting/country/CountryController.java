@@ -24,17 +24,4 @@ public class CountryController {
     public List<Country> getAllMusic() {
         return countryService.getAllCountries();
     }
-
-    @GetMapping("/{countryCode}")
-    public Country getCountryByCode(@PathVariable String countryCode) {
-        return countryService.getCountryByCode(countryCode);
-    }
-
-    @DeleteMapping("/{countryCode}")
-    public ResponseEntity<Void> deleteCountry(@PathVariable String countryCode) {
-        countryService.deleteCountry(countryCode);
-        return ResponseEntity.noContent().build();  // Renvoie un statut 204 (No Content) après suppression
-    }
-
-
 }
